@@ -1,6 +1,7 @@
-package configuration;
+package com.robotyk.configuration;
 
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.hibernate5.HibernateTransactionManager;
@@ -16,13 +17,22 @@ import java.util.Properties;
 
 @Configuration
 @EnableTransactionManagement
-public class HibernateConfig {
+@ComponentScan(basePackages = "com.robotyk.dao")
+public class AppConfig {
+
+    @Bean
+    public PlatformTransactionManager hibernateTransactionManager() {
+        HibernateTransactionManager transactionManager
+                = new HibernateTransactionManager();
+        transactionManager.setSessionFactory(sessionFactory().getObject());
+        return transactionManager;
+    }
 
     @Bean
     public LocalSessionFactoryBean sessionFactory() {
         LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
         sessionFactory.setDataSource(dataSource());
-        sessionFactory.setPackagesToScan("java.entity");
+        sessionFactory.setPackagesToScan("com.robotyk.entity");
         sessionFactory.setHibernateProperties(hibernateProperties());
 
         return sessionFactory;
@@ -39,18 +49,8 @@ public class HibernateConfig {
         return dataSource;
     }
 
-    @Bean
-    public PlatformTransactionManager hibernateTransactionManager() {
-        HibernateTransactionManager transactionManager
-                = new HibernateTransactionManager();
-        transactionManager.setSessionFactory(sessionFactory().getObject());
-        return transactionManager;
-    }
-
     private Properties hibernateProperties() {
         Properties hibernateProperties = new Properties();
-//        hibernateProperties.setProperty(
-//                "hibernate.hbm2ddl.auto", "create-drop");
         hibernateProperties.setProperty(
                 "hibernate.dialect", "org.hibernate.dialect.MySQLDialect");
         return hibernateProperties;
