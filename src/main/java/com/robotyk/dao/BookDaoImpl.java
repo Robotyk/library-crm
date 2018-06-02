@@ -1,30 +1,31 @@
 package com.robotyk.dao;
 
-import com.robotyk.entity.Reader;
+import com.robotyk.entity.Book;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
+
 import java.util.List;
 
 /**
- * Created by Robotyk on 2018-06-01.
+ * Created by Robotyk on 2018-06-02.
  */
 
 @Repository
-public class ReaderDaoImpl implements ReaderDao {
+public class BookDaoImpl implements BookDao {
 
     @Autowired
     SessionFactory sessionFactory;
 
     @Override
     @Transactional
-    public List<Reader> getReaders() {
+    public List<Book> getBooks() {
 
         Session session = sessionFactory.getCurrentSession();
-        Query<Reader> query = session.createQuery("from Reader", Reader.class);
+        Query<Book> query = session.createQuery("from Book", Book.class);
         return query.getResultList();
     }
 }
