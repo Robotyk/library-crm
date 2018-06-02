@@ -7,7 +7,6 @@ import com.robotyk.entity.Reader;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
 import java.util.List;
 
 /**
@@ -18,6 +17,7 @@ import java.util.List;
 public class LibraryServiceImpl implements LibraryService{
 
     @Autowired
+    private
     ReaderDao readerDao;
 
     @Autowired
@@ -27,6 +27,12 @@ public class LibraryServiceImpl implements LibraryService{
     @Override
     public List<Reader> getReaders() {
         return readerDao.getReaders();
+    }
+
+    @Transactional
+    @Override
+    public void addReader(String firstName, String lastName, String email) {
+        readerDao.addReader(firstName, lastName, email);
     }
 
     @Transactional

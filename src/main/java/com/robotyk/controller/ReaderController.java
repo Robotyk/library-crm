@@ -21,9 +21,16 @@ public class ReaderController {
     private LibraryService libraryService;
 
     @GetMapping("/list")
-    public String getList(Model model) {
+    public String getReaders(Model model) {
         List<Reader> readers = libraryService.getReaders();
         model.addAttribute("readers", readers);
         return "readers-list";
+    }
+
+    @GetMapping("/new")
+    public String getNewReader(Model model) {
+        Reader reader = new Reader();
+        model.addAttribute("reader", reader);
+        return "new-reader";
     }
 }

@@ -11,4 +11,5 @@ import java.util.List;
 public interface ReaderDao {
 
     List<Reader> getReaders();
+    void addReader(String firstName, String lastName, String email);
 }
