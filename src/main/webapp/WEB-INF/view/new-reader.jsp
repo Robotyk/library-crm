@@ -6,7 +6,7 @@
 </head>
 <body>
 <h2>adding new reader</h2>
-<form:form action="saveReader" modelAttribute="reader" method="POST">
+<form:form action="save-reader" modelAttribute="reader" method="POST">
     <table>
         <tbody>
         <tr>

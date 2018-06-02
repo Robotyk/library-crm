@@ -21,13 +21,13 @@ public class ReaderDaoImpl implements ReaderDao {
     @Override
     public List<Reader> getReaders() {
         Session session = sessionFactory.getCurrentSession();
-        Query<Reader> query = session.createQuery("from Reader", Reader.class);
+        Query<Reader> query = session.createQuery("from Reader order by lastName", Reader.class);
         return query.getResultList();
     }
 
     @Override
-    public void addReader(String firstName, String lastName, String email) {
-        Reader newReader = new Reader(firstName, lastName, email);
+    public void addReader(Reader reader) {
+        Reader newReader = new Reader(reader.getFirstName(), reader.getLastName(), reader.getEmail());
         Session session = sessionFactory.getCurrentSession();
         session.save(newReader);
     }

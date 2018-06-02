@@ -7,7 +7,7 @@
     <br>
 <h2>Library customer relationship management</h2>
 <br><br>
-    <input type="button" value="Add new reader" onclick="location.href='/reader/new'">
+    <input type="button" value="Show all readers" onclick="location.href='/reader/list'">
     Add new book
     Show all readers
     Show collection of books

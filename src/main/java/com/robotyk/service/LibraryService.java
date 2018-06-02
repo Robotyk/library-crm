@@ -11,6 +11,6 @@ import java.util.List;
 public interface LibraryService {
 
     List<Reader> getReaders();
-    void addReader(String firstName, String lastName, String email);
+    void addReader(Reader reader);
     List<Book> getBooks();
 }

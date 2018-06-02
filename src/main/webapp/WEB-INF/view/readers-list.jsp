@@ -5,6 +5,9 @@
     <title>Readers list</title>
 </head>
 <body>
+<br>
+<input type="button" value="Add new reader" onclick="location.href='/reader/new'">
+<br>
 <table>
     <tr>
         <th>First name</th>

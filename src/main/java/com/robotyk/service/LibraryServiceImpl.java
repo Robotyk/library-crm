@@ -31,8 +31,8 @@ public class LibraryServiceImpl implements LibraryService{
 
     @Transactional
     @Override
-    public void addReader(String firstName, String lastName, String email) {
-        readerDao.addReader(firstName, lastName, email);
+    public void addReader(Reader reader) {
+        readerDao.addReader(reader);
     }
 
     @Transactional
