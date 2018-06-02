@@ -1,6 +1,6 @@
 package com.robotyk.dao;
 
-import com.robotyk.entity.Customer;
+import com.robotyk.entity.Reader;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
@@ -14,16 +14,16 @@ import java.util.List;
  */
 
 @Repository
-public class CustomerDaoImpl implements CustomerDao {
+public class ReaderDaoImpl implements ReaderDao {
 
     @Autowired
     SessionFactory sessionFactory;
 
     @Transactional
-    public List<Customer> getCustomers() {
+    public List<Reader> getReaders() {
 
         Session session = sessionFactory.getCurrentSession();
-        Query<Customer> query = session.createQuery("from Customer", Customer.class);
+        Query<Reader> query = session.createQuery("from Reader", Reader.class);
         return query.getResultList();
     }
 }

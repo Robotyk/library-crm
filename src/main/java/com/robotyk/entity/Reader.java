@@ -1,14 +1,16 @@
 package com.robotyk.entity;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Robotyk on 2018-06-01.
  */
 
 @Entity
-@Table(name = "customer")
-public class Customer {
+@Table(name = "reader")
+public class Reader {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,15 +29,23 @@ public class Customer {
     @Column(name = "books_amount")
     private Integer booksAmount;
 
-    public Customer() {
+    @OneToMany(mappedBy = "reader", cascade = {
+            CascadeType.PERSIST,
+            CascadeType.DETACH,
+            CascadeType.MERGE,
+            CascadeType.REFRESH
+    })
+    private List<Book> books;
+
+    public Reader() {
 
     }
 
-    public Customer(String firstName, String lastName, String email, Integer booksAmount) {
+    public Reader(String firstName, String lastName, String email) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
-        this.booksAmount = booksAmount;
+        this.booksAmount = 0;
     }
 
     public int getId() {
@@ -47,7 +57,6 @@ public class Customer {
     }
 
     public String getFirstName() {
-
         return firstName;
     }
 
@@ -79,9 +88,34 @@ public class Customer {
         this.booksAmount = booksAmount;
     }
 
+    public List<Book> getBooks() {
+        return books;
+    }
+
+    public void setBooks(List<Book> books) {
+        this.books = books;
+    }
+
+    public void addBook(Book book) {
+        if (books == null) {
+            books = new ArrayList<>();
+        }
+        book.setReader(this);
+        books.add(book);
+        booksAmount++;
+    }
+
+    public void removeBook(Book book) {
+        if (books != null && books.contains(book)) {
+            books.remove(book);
+            book.setReader(null);
+            booksAmount--;
+        }
+    }
+
     @Override
     public String toString() {
-        return "Customer{" +
+        return "Reader{" +
                 "id=" + id +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +

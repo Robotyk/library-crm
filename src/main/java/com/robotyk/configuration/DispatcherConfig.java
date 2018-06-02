@@ -12,9 +12,10 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 /**
  * Created by Robotyk on 2018-05-31.
  */
+
 @Configuration
 @EnableWebMvc
-@ComponentScan(basePackages = "com.robotyk.controller")
+@ComponentScan(basePackages = "com.robotyk")
 public class DispatcherConfig implements WebMvcConfigurer {
 
     @Bean

@@ -2,7 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
-    <title>Customers list</title>
+    <title>Readers list</title>
 </head>
 <body>
 <table>
@@ -11,11 +11,11 @@
         <th>Last name</th>
         <th>Email</th>
     </tr>
-    <c:forEach items="${customers}" var="customer">
+    <c:forEach items="${readers}" var="reader">
         <tr>
-            <td><c:out value="${customer.firstName}" /></td>
-            <td><c:out value="${customer.lastName}" /></td>
-            <td><c:out value="${customer.email}" /></td>
+            <td><c:out value="${reader.firstName}" /></td>
+            <td><c:out value="${reader.lastName}" /></td>
+            <td><c:out value="${reader.email}" /></td>
         </tr>
     </c:forEach>
 </table>

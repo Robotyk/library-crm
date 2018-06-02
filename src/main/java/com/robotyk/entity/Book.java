@@ -30,8 +30,8 @@ public class Book {
             CascadeType.DETACH,
             CascadeType.REFRESH
     })
-    @JoinColumn(name = "customer_id")
-    private Customer customer;
+    @JoinColumn(name = "reader_id")
+    private Reader reader;
 
     public Book() {
     }
@@ -75,12 +75,12 @@ public class Book {
         this.genre = genre;
     }
 
-    public Customer getCustomer() {
-        return customer;
+    public Reader getReader() {
+        return reader;
     }
 
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
+    public void setReader(Reader reader) {
+        this.reader = reader;
     }
 
     @Override
@@ -90,7 +90,7 @@ public class Book {
                 ", title='" + title + '\'' +
                 ", author='" + author + '\'' +
                 ", genre='" + genre + '\'' +
-                ", customer=" + customer +
+                ", reader=" + reader +
                 '}';
     }
 }
