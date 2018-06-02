@@ -1,7 +1,7 @@
 package com.robotyk.controller;
 
-import com.robotyk.dao.ReaderDao;
 import com.robotyk.entity.Reader;
+import com.robotyk.service.LibraryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,11 +18,11 @@ import java.util.List;
 public class ReaderController {
 
     @Autowired
-    private ReaderDao readerDao;
+    private LibraryService libraryService;
 
     @GetMapping("/list")
     public String getList(Model model) {
-        List<Reader> readers = readerDao.getReaders();
+        List<Reader> readers = libraryService.getReaders();
         model.addAttribute("readers", readers);
         return "readers-list";
     }
