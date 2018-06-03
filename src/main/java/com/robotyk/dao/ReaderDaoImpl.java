@@ -27,8 +27,16 @@ public class ReaderDaoImpl implements ReaderDao {
 
     @Override
     public void addReader(Reader reader) {
-        Reader newReader = new Reader(reader.getFirstName(), reader.getLastName(), reader.getEmail());
+        if (reader.getBooksAmount() == null) {
+            reader.setBooksAmount(0);
+        }
         Session session = sessionFactory.getCurrentSession();
-        session.save(newReader);
+        session.saveOrUpdate(reader);
+    }
+
+    @Override
+    public Reader getReader(Integer id) {
+        Session session = sessionFactory.getCurrentSession();
+        return session.get(Reader.class, id);
     }
 }

@@ -2,11 +2,13 @@
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <html>
 <head>
-    <title>New reader</title>
+    <title>Reader form</title>
 </head>
 <body>
-<h2>adding new reader</h2>
+<h2>Save reader</h2>
 <form:form action="save-reader" modelAttribute="reader" method="POST">
+    <form:hidden path="id"/>
+    <form:hidden path="booksAmount"/>
     <table>
         <tbody>
         <tr>
@@ -29,7 +31,7 @@
 </form:form>
 <br><br>
 <p>
-    <a href="${pageContext.request.contextPath}/">Cancel</a>
+    <input type="button" value="Cancel" onclick="location.href='/reader/list'"/>
 </p>
 </body>
 </html>

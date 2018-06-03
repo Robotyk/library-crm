@@ -10,4 +10,5 @@ import java.util.List;
 public interface BookDao {
 
     List<Book> getBooks();
+    void addBook(Book book);
 }

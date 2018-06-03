@@ -13,4 +13,6 @@ public interface LibraryService {
     List<Reader> getReaders();
     void addReader(Reader reader);
     List<Book> getBooks();
+    void addBook(Book book);
+    Reader getReader(Integer id);
 }

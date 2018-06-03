@@ -41,4 +41,16 @@ public class LibraryServiceImpl implements LibraryService{
         return bookDao.getBooks();
     }
 
+    @Transactional
+    @Override
+    public void addBook(Book book) {
+        bookDao.addBook(book);
+    }
+
+    @Transactional
+    @Override
+    public Reader getReader(Integer id) {
+        return readerDao.getReader(id);
+    }
+
 }

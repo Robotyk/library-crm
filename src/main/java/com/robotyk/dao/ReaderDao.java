@@ -12,4 +12,5 @@ public interface ReaderDao {
 
     List<Reader> getReaders();
     void addReader(Reader reader);
+    Reader getReader(Integer id);
 }
