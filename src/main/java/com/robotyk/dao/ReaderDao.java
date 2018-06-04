@@ -16,4 +16,5 @@ public interface ReaderDao {
     Reader getReader(Integer id);
     List<Book> getReaderBooks(Integer id);
     void borrowBook(Integer readerId, Integer bookId);
+    void returnBook(Integer readerId, Integer bookId);
 }

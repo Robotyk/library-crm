@@ -15,6 +15,7 @@ public interface LibraryService {
     Reader getReader(Integer id);
     List<Book> getReaderBooks(Integer id);
     void borrowBook(Integer readerId, Integer bookId);
+    void returnBook(Integer readerId, Integer bookId);
 
     List<Book> getAllBooks();
     void addBook(Book book);
