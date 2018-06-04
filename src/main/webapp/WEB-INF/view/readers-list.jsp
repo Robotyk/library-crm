@@ -37,7 +37,9 @@
             <td><a href="${borrowBook}">Borrow book</a></td>
             <td><a href="${showBooks}">Show books</a></td>
             <td><a href="${update}">Update</a></td>
-            <td><a href="${delete}">Delete</a></td>
+            <td><a href="${delete}"
+            onclick="if (!(confirm('Are you sure you want to delete this reader?'))) return false">
+                Delete</a></td>
         </tr>
     </c:forEach>
 </table>

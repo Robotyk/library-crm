@@ -10,12 +10,13 @@ import java.util.List;
  */
 public interface LibraryService {
 
-    List<Reader> getReaders();
+    List<Reader> getAllReaders();
     void addReader(Reader reader);
     Reader getReader(Integer id);
     List<Book> getReaderBooks(Integer id);
     void borrowBook(Integer readerId, Integer bookId);
     void returnBook(Integer readerId, Integer bookId);
+    void deleteReader(Integer id);
 
     List<Book> getAllBooks();
     void addBook(Book book);

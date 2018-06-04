@@ -11,9 +11,10 @@ import java.util.List;
 
 public interface ReaderDao {
 
-    List<Reader> getReaders();
-    void addReader(Reader reader);
+    List<Reader> getAllReaders();
     Reader getReader(Integer id);
+    void addReader(Reader reader);
+    void deleteReader(Integer id);
     List<Book> getReaderBooks(Integer id);
     void borrowBook(Integer readerId, Integer bookId);
     void returnBook(Integer readerId, Integer bookId);

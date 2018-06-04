@@ -25,8 +25,8 @@ public class LibraryServiceImpl implements LibraryService{
 
     @Transactional
     @Override
-    public List<Reader> getReaders() {
-        return readerDao.getReaders();
+    public List<Reader> getAllReaders() {
+        return readerDao.getAllReaders();
     }
 
     @Transactional
@@ -57,6 +57,12 @@ public class LibraryServiceImpl implements LibraryService{
     @Override
     public void returnBook(Integer readerId, Integer bookId) {
         readerDao.returnBook(readerId, bookId);
+    }
+
+    @Transactional
+    @Override
+    public void deleteReader(Integer id) {
+        readerDao.deleteReader(id);
     }
 
     @Transactional

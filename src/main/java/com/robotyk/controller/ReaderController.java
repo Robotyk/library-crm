@@ -22,7 +22,7 @@ public class ReaderController {
 
     @GetMapping("/list")
     public String getReaders(Model model) {
-        List<Reader> readers = libraryService.getReaders();
+        List<Reader> readers = libraryService.getAllReaders();
         model.addAttribute("readers", readers);
         return "readers-list";
     }
@@ -44,6 +44,12 @@ public class ReaderController {
     @PostMapping("save-reader")
     public String saveNewReader(@ModelAttribute("reader") Reader reader) {
         libraryService.addReader(reader);
+        return "redirect:/reader/list";
+    }
+
+    @GetMapping("delete")
+    public String deleteReader(@RequestParam("reader-id") Integer id) {
+        libraryService.deleteReader(id);
         return "redirect:/reader/list";
     }
 
