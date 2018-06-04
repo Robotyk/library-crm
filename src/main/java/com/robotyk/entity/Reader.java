@@ -42,7 +42,6 @@ public class Reader {
     private List<Book> books;
 
     public Reader() {
-
     }
 
     public Reader(String firstName, String lastName, String email) {
@@ -90,6 +89,14 @@ public class Reader {
 
     public void setBooksAmount(Integer booksAmount) {
         this.booksAmount = booksAmount;
+    }
+
+    public void incrementBooksAmount() {
+        ++booksAmount;
+    }
+
+    public void decrementBooksAmount() {
+        --booksAmount;
     }
 
     public List<Book> getBooks() {

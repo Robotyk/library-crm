@@ -8,11 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.InitBinder;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.util.List;
 
@@ -33,17 +29,17 @@ public class BookController {
         dataBinder.registerCustomEditor(String.class, stringTrimmerEditor);
     }
 
-    @GetMapping("/list")
-    public String getBooks(Model model) {
-        List<Book> books = libraryService.getAllBooks();
-        model.addAttribute("books", books);
-        return "books-list";
-    }
-
     @GetMapping("/new")
     public String getNewBook(Model model) {
         Book newBook = new Book();
         model.addAttribute("book", newBook);
+        return "new-book";
+    }
+
+    @GetMapping("/update-book")
+    public String updateBook(@RequestParam("book-id") Integer bookId, Model model) {
+        Book book = libraryService.getBook(bookId);
+        model.addAttribute("book", book);
         return "new-book";
     }
 
@@ -55,5 +51,18 @@ public class BookController {
         }
         libraryService.addBook(book);
         return "redirect:/book/list";
+    }
+
+    @GetMapping("/delete-book")
+    public String deleteBook(@RequestParam("book-id") Integer id) {
+        libraryService.deleteBook(id);
+        return "redirect:/book/list";
+    }
+
+    @GetMapping("/list")
+    public String getBooks(Model model) {
+        List<Book> books = libraryService.getAllBooks();
+        model.addAttribute("books", books);
+        return "books-list";
     }
 }

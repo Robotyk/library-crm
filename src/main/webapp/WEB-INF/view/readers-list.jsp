@@ -8,7 +8,7 @@
 <br>
 <input type="button" value="Back to main page" onclick="location.href='/'">
 <input type="button" value="Add new reader" onclick="location.href='/reader/new'">
-<br><br><br>
+<br><br>
 <table>
     <tr>
         <th>First name</th>

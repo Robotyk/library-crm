@@ -25,12 +25,6 @@ public class LibraryServiceImpl implements LibraryService{
 
     @Transactional
     @Override
-    public List<Reader> getAllReaders() {
-        return readerDao.getAllReaders();
-    }
-
-    @Transactional
-    @Override
     public void addReader(Reader reader) {
         readerDao.addReader(reader);
     }
@@ -39,6 +33,18 @@ public class LibraryServiceImpl implements LibraryService{
     @Override
     public Reader getReader(Integer id) {
         return readerDao.getReader(id);
+    }
+
+    @Transactional
+    @Override
+    public void deleteReader(Integer id) {
+        readerDao.deleteReader(id);
+    }
+
+    @Transactional
+    @Override
+    public List<Reader> getAllReaders() {
+        return readerDao.getAllReaders();
     }
 
     @Transactional
@@ -61,20 +67,20 @@ public class LibraryServiceImpl implements LibraryService{
 
     @Transactional
     @Override
-    public void deleteReader(Integer id) {
-        readerDao.deleteReader(id);
-    }
-
-    @Transactional
-    @Override
     public void addBook(Book book) {
         bookDao.addBook(book);
     }
 
     @Transactional
     @Override
-    public List<Book> getUnoccupiedBooks() {
-        return bookDao.getUnoccupiedBooks();
+    public Book getBook(Integer id) {
+        return bookDao.getBook(id);
+    }
+
+    @Transactional
+    @Override
+    public void deleteBook(Integer id) {
+        bookDao.deleteBook(id);
     }
 
     @Transactional
@@ -83,4 +89,9 @@ public class LibraryServiceImpl implements LibraryService{
         return bookDao.getAllBooks();
     }
 
+    @Transactional
+    @Override
+    public List<Book> getUnoccupiedBooks() {
+        return bookDao.getUnoccupiedBooks();
+    }
 }

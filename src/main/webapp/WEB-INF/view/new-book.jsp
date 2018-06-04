@@ -5,8 +5,9 @@
     <title>New book</title>
 </head>
 <body>
-<h2>adding new reader</h2>
+<h2>Save book</h2>
 <form:form action="save-book" modelAttribute="book" method="POST">
+    <form:hidden path="id"/>
     <table>
         <tbody>
         <tr>

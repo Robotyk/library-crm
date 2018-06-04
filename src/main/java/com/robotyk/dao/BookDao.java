@@ -9,7 +9,9 @@ import java.util.List;
 
 public interface BookDao {
 
-    List<Book> getAllBooks();
     void addBook(Book book);
+    Book getBook(Integer id);
+    void deleteBook(Integer id);
+    List<Book> getAllBooks();
     List<Book> getUnoccupiedBooks();
 }

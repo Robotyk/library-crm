@@ -64,8 +64,7 @@ public class ReaderDaoImpl implements ReaderDao {
         Book book = session.get(Book.class, bookId);
         Reader reader = session.get(Reader.class, readerId);
         book.setReader(reader);
-        Integer currentBooksAmount = reader.getBooksAmount() + 1;
-        reader.setBooksAmount(currentBooksAmount);
+        reader.incrementBooksAmount();
     }
 
     @Override
@@ -74,7 +73,6 @@ public class ReaderDaoImpl implements ReaderDao {
         Book book = session.get(Book.class, bookId);
         Reader reader = session.get(Reader.class, readerId);
         book.setReader(null);
-        Integer currentBookAmount = reader.getBooksAmount() - 1;
-        reader.setBooksAmount(currentBookAmount);
+        reader.decrementBooksAmount();
     }
 }
