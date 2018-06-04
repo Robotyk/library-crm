@@ -1,7 +1,8 @@
 package com.robotyk.entity;
 
 import javax.persistence.*;
-import java.util.ArrayList;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
 /**
@@ -17,12 +18,15 @@ public class Reader {
     @Column(name = "id")
     private int id;
 
+    @NotNull
     @Column(name = "first_name")
     private String firstName;
 
+    @NotNull
     @Column(name = "last_name")
     private String lastName;
 
+    @Email
     @Column(name = "email")
     private String email;
 

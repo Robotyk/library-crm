@@ -3,13 +3,17 @@ package com.robotyk.controller;
 import com.robotyk.entity.Book;
 import com.robotyk.service.LibraryService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-
+import javax.validation.Valid;
 import java.util.List;
 
 /**
@@ -21,7 +25,13 @@ import java.util.List;
 public class BookController {
 
     @Autowired
-    LibraryService libraryService;
+    private LibraryService libraryService;
+
+    @InitBinder
+    public void initBinder(WebDataBinder dataBinder) {
+        StringTrimmerEditor stringTrimmerEditor = new StringTrimmerEditor(true);
+        dataBinder.registerCustomEditor(String.class, stringTrimmerEditor);
+    }
 
     @GetMapping("/list")
     public String getBooks(Model model) {
@@ -38,7 +48,11 @@ public class BookController {
     }
 
     @PostMapping("/save-book")
-    public String saveBook(@ModelAttribute("book") Book book) {
+    public String saveBook(@Valid @ModelAttribute("book") Book book,
+                           BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return "new-book";
+        }
         libraryService.addBook(book);
         return "redirect:/book/list";
     }

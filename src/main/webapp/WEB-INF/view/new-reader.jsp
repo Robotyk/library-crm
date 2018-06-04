@@ -12,26 +12,26 @@
     <table>
         <tbody>
         <tr>
-            <td><label>First name:</label></td>
+            <td><label>First name (*):</label></td>
             <td><form:input path="firstName"/></td>
+            <td><form:errors path="firstName"/></td>
         </tr>
         <tr>
-            <td><label>Last name:</label></td>
+            <td><label>Last name (*):</label></td>
             <td><form:input path="lastName"/></td>
+            <td><form:errors path="lastName"/></td>
         </tr>
         <tr>
             <td><label>Email:</label></td>
             <td><form:input path="email"/></td>
+            <td><form:errors path="email"/></td>
         </tr>
         <tr>
-            <td><input type="submit" value="Save" /></td>
+            <td><input type="submit" value="Save" />
+                <input type="button" value="Cancel" onclick="location.href='/reader/list'"/></td>
         </tr>
         </tbody>
     </table>
 </form:form>
-<br><br>
-<p>
-    <input type="button" value="Cancel" onclick="location.href='/reader/list'"/>
-</p>
 </body>
 </html>

@@ -10,26 +10,26 @@
     <table>
         <tbody>
         <tr>
-            <td><label>Title:</label></td>
+            <td><label>Title (*):</label></td>
             <td><form:input path="title"/></td>
+            <td><form:errors path="title"/></td>
         </tr>
         <tr>
-            <td><label>Author:</label></td>
+            <td><label>Author (*):</label></td>
             <td><form:input path="author"/></td>
+            <td><form:errors path="author"/></td>
         </tr>
         <tr>
-            <td><label>Genre:</label></td>
+            <td><label>Genre (*):</label></td>
             <td><form:input path="genre"/></td>
+            <td><form:errors path="genre"/></td>
         </tr>
         <tr>
-            <td><input type="submit" value="Save" /></td>
+            <td><input type="submit" value="Save" />
+                <input type="button" value="Cancel" onclick="location.href='/book/list'"/></td>
         </tr>
         </tbody>
     </table>
 </form:form>
-<br><br>
-<p>
-    <input type="button" value="Cancel" onclick="location.href='/book/list'"/>
-</p>
 </body>
 </html>

@@ -1,6 +1,7 @@
 package com.robotyk.entity;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 /**
  * Created by Robotyk on 2018-06-01.
@@ -15,12 +16,15 @@ public class Book {
     @Column(name = "id")
     private int id;
 
+    @NotNull
     @Column(name = "title")
     private String title;
 
+    @NotNull
     @Column(name = "author")
     private String author;
 
+    @NotNull
     @Column(name = "genre")
     private String genre;
 
@@ -45,7 +49,6 @@ public class Book {
     public int getId() {
         return id;
     }
-
 
     public void setId(int id) {
         this.id = id;

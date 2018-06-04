@@ -4,9 +4,13 @@ import com.robotyk.entity.Book;
 import com.robotyk.entity.Reader;
 import com.robotyk.service.LibraryService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
+import javax.validation.Valid;
 import java.util.List;
 
 /**
@@ -19,6 +23,12 @@ public class ReaderController {
 
     @Autowired
     private LibraryService libraryService;
+
+    @InitBinder
+    public void initBinder(WebDataBinder dataBinder) {
+        StringTrimmerEditor stringTrimmerEditor = new StringTrimmerEditor(true);
+        dataBinder.registerCustomEditor(String.class, stringTrimmerEditor);
+    }
 
     @GetMapping("/list")
     public String getReaders(Model model) {
@@ -41,13 +51,17 @@ public class ReaderController {
         return "new-reader";
     }
 
-    @PostMapping("save-reader")
-    public String saveNewReader(@ModelAttribute("reader") Reader reader) {
+    @PostMapping("/save-reader")
+    public String saveNewReader(@Valid @ModelAttribute("reader") Reader reader,
+                                BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return "new-reader";
+        }
         libraryService.addReader(reader);
         return "redirect:/reader/list";
     }
 
-    @GetMapping("delete")
+    @GetMapping("/delete")
     public String deleteReader(@RequestParam("reader-id") Integer id) {
         libraryService.deleteReader(id);
         return "redirect:/reader/list";
