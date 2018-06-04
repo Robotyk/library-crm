@@ -54,4 +54,19 @@ public class ReaderController {
         model.addAttribute("readerId", id);
         return "reader-books";
     }
+
+    @GetMapping("/borrow-book")
+    public String getBorrowBookPage(@RequestParam("reader-id") Integer id, Model model) {
+        List<Book> unoccupiedBooks = libraryService.getUnoccupiedBooks();
+        model.addAttribute("unoccupiedBooks", unoccupiedBooks);
+        model.addAttribute("readerId", id);
+        return "borrow-book";
+    }
+
+    @GetMapping("/borrow")
+    public String borrowBook(@RequestParam("reader-id") Integer readerId,
+                             @RequestParam("book-id") Integer bookId) {
+        libraryService.borrowBook(readerId, bookId);
+        return "redirect:/reader/list";
+    }
 }

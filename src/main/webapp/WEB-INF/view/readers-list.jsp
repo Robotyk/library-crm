@@ -17,7 +17,7 @@
         <th>Books</th>
     </tr>
     <c:forEach items="${readers}" var="reader">
-        <c:url var="addBook" value="/reader/add-book">
+        <c:url var="borrowBook" value="/reader/borrow-book">
             <c:param name="reader-id" value="${reader.id}"/>
         </c:url>
         <c:url var="showBooks" value="/reader/show-books">
@@ -34,7 +34,7 @@
             <td><c:out value="${reader.lastName}" /></td>
             <td><c:out value="${reader.email}" /></td>
             <td><c:out value="${reader.booksAmount}" /></td>
-            <td><a href="${addBook}">Add book</a></td>
+            <td><a href="${borrowBook}">Borrow book</a></td>
             <td><a href="${showBooks}">Show books</a></td>
             <td><a href="${update}">Update</a></td>
             <td><a href="${delete}">Delete</a></td>

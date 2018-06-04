@@ -96,23 +96,6 @@ public class Reader {
         this.books = books;
     }
 
-    public void addBook(Book book) {
-        if (books == null) {
-            books = new ArrayList<>();
-        }
-        book.setReader(this);
-        books.add(book);
-        booksAmount++;
-    }
-
-    public void removeBook(Book book) {
-        if (books != null && books.contains(book)) {
-            books.remove(book);
-            book.setReader(null);
-            booksAmount--;
-        }
-    }
-
     @Override
     public String toString() {
         return "Reader{" +

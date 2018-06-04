@@ -5,6 +5,7 @@
     <title>Books ${readerId}</title>
 </head>
 <body>
+<input type="button" value="Back to user's list" onclick="location.href='/reader/list'">
 <table>
     <tr>
         <th>Title</th>
@@ -18,5 +19,6 @@
         <td><c:out value="${books.genre}" /></td>
     </tr>
     </c:forEach>
+
 </body>
 </html>

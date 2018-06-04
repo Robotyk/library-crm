@@ -11,4 +11,5 @@ public interface BookDao {
 
     List<Book> getAllBooks();
     void addBook(Book book);
+    List<Book> getUnoccupiedBooks();
 }
