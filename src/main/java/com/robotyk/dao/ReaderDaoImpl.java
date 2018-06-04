@@ -1,5 +1,6 @@
 package com.robotyk.dao;
 
+import com.robotyk.entity.Book;
 import com.robotyk.entity.Reader;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -38,5 +39,13 @@ public class ReaderDaoImpl implements ReaderDao {
     public Reader getReader(Integer id) {
         Session session = sessionFactory.getCurrentSession();
         return session.get(Reader.class, id);
+    }
+
+    @Override
+    public List<Book> getReaderBooks(Integer id) {
+        Session session = sessionFactory.getCurrentSession();
+        Query<Book> query = session.createQuery("from Book where reader.id = :readerId", Book.class);
+        query.setParameter("readerId", id);
+        return query.getResultList();
     }
 }

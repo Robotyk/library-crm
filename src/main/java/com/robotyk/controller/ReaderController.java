@@ -1,5 +1,6 @@
 package com.robotyk.controller;
 
+import com.robotyk.entity.Book;
 import com.robotyk.entity.Reader;
 import com.robotyk.service.LibraryService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,5 +45,13 @@ public class ReaderController {
     public String saveNewReader(@ModelAttribute("reader") Reader reader) {
         libraryService.addReader(reader);
         return "redirect:/reader/list";
+    }
+
+    @GetMapping("/show-books")
+    public String getReaderBooks(@RequestParam("reader-id") Integer id, Model model) {
+        List<Book> books = libraryService.getReaderBooks(id);
+        model.addAttribute("readerBooks", books);
+        model.addAttribute("readerId", id);
+        return "reader-books";
     }
 }

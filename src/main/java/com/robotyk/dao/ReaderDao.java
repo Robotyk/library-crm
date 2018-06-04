@@ -1,5 +1,6 @@
 package com.robotyk.dao;
 
+import com.robotyk.entity.Book;
 import com.robotyk.entity.Reader;
 
 import java.util.List;
@@ -13,4 +14,5 @@ public interface ReaderDao {
     List<Reader> getReaders();
     void addReader(Reader reader);
     Reader getReader(Integer id);
+    List<Book> getReaderBooks(Integer id);
 }

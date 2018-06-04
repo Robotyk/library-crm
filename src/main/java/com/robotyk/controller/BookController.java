@@ -25,7 +25,7 @@ public class BookController {
 
     @GetMapping("/list")
     public String getBooks(Model model) {
-        List<Book> books = libraryService.getBooks();
+        List<Book> books = libraryService.getAllBooks();
         model.addAttribute("books", books);
         return "books-list";
     }
