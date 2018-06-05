@@ -33,7 +33,8 @@ public class Reader {
     @Column(name = "books_amount")
     private Integer booksAmount;
 
-    @OneToMany(mappedBy = "reader", cascade = {
+    @OneToMany(mappedBy = "reader", fetch=FetchType.EAGER,
+            cascade = {
             CascadeType.PERSIST,
             CascadeType.DETACH,
             CascadeType.MERGE,

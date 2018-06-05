@@ -39,7 +39,7 @@ public class ReaderDaoImpl implements ReaderDao {
     public void deleteReader(Integer id) {
         Session session = sessionFactory.getCurrentSession();
         Reader reader = session.get(Reader.class, id);
-        List<Book> readerBooks = this.getReaderBooks(id);
+        List<Book> readerBooks = reader.getBooks();
         readerBooks.forEach(book -> book.setReader(null));
         session.delete(reader);
     }
@@ -53,9 +53,8 @@ public class ReaderDaoImpl implements ReaderDao {
     @Override
     public List<Book> getReaderBooks(Integer id) {
         Session session = sessionFactory.getCurrentSession();
-        Query<Book> query = session.createQuery("from Book where reader.id = :readerId", Book.class);
-        query.setParameter("readerId", id);
-        return query.getResultList();
+        Reader reader = session.get(Reader.class, id);
+        return reader.getBooks();
     }
 
     @Override
