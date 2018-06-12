@@ -21,8 +21,12 @@ import java.util.List;
 @RequestMapping("/reader")
 public class ReaderController {
 
+    private final LibraryService libraryService;
+
     @Autowired
-    private LibraryService libraryService;
+    public ReaderController(LibraryService libraryService) {
+        this.libraryService = libraryService;
+    }
 
     @InitBinder
     public void initBinder(WebDataBinder dataBinder) {

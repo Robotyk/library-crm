@@ -16,12 +16,14 @@ import java.util.List;
 @Service
 public class LibraryServiceImpl implements LibraryService{
 
-    @Autowired
-    private
-    ReaderDao readerDao;
+    private final ReaderDao readerDao;
+    private final BookDao bookDao;
 
     @Autowired
-    BookDao bookDao;
+    public LibraryServiceImpl(ReaderDao readerDao, BookDao bookDao) {
+        this.readerDao = readerDao;
+        this.bookDao = bookDao;
+    }
 
     @Transactional
     @Override
